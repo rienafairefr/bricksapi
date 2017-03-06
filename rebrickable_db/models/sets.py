@@ -16,5 +16,5 @@ class Set(Base):
     name= Column(String)
     year = Column(Integer)
     theme_id = Column(ForeignKey('themes.id'))
-    theme = relationship('Theme')
+    theme = relationship('Theme',backref='sets')
     num_parts = Column(String)
