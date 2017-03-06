@@ -31,9 +31,11 @@ data={
 
 for filename,typ in data.items():
     print('Treating %s ...'%filename)
-    csv_reader = reader(open(os.path.join('rebrickable_data', filename)))
+    csv_reader = reader(open(os.path.join('rebrickable_data', filename),encoding='utf-8'))
     headers = next(csv_reader, None)
+    dictionaries=[]
     for row in csv_reader:
         dictionary = {headers[i]:row[i] for i in range(len(headers))}
-        session.add(typ(**dictionary))
+        dictionaries.append(dictionary)
+    session.bulk_insert_mappings(typ,dictionaries)
     session.commit()
