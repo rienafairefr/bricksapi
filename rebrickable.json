@@ -1,0 +1,2414 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "",
+    "version": ""
+  },
+  "definitions": {
+    "Theme": {
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "parent_id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "Set": {
+      "properties": {
+        "set_num": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "year": {
+          "type": "integer",
+          "format":"int64"
+        },
+        "theme_id":{
+          "type": "integer",
+          "format":"int64"
+        },
+        "num_parts":{
+          "type": "integer",
+          "format":"int64"
+        }
+      }
+    },
+    "Themes": {
+      "type": "object",
+      "properties": {
+        "count": "int",
+        "next": "str",
+        "previous": "str",
+        "results": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Theme"
+          }
+        }
+      }
+    },
+    "Sets": {
+      "type": "object",
+      "properties": {
+        "count": "int",
+        "next": "str",
+        "previous": "str",
+        "results": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Set"
+          }
+        }
+      }
+    }
+  },
+  "paths": {
+    "/api/v3/lego/colors/": {
+      "get": {
+        "summary": "Get a list of all Colors.",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "description": "Get a list of all Colors.",
+        "tags": [
+          "lego"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "required": false,
+            "description": "",
+            "name": "page",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "required": false,
+            "description": "",
+            "name": "ordering",
+            "type": "string"
+          }
+        ],
+        "operationId": "lego_colors_list"
+      }
+    },
+    "/api/v3/lego/colors/{id}/": {
+      "get": {
+        "summary": "Get details about a specific Color.",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "description": "Get details about a specific Color.",
+        "tags": [
+          "lego"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "operationId": "lego_colors_read"
+      }
+    },
+    "/api/v3/lego/elements/{element_id}/": {
+      "get": {
+        "summary": "Get details about a specific Element ID.",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "description": "Get details about a specific Element ID.",
+        "tags": [
+          "lego"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "element_id",
+            "type": "string"
+          }
+        ],
+        "operationId": "lego_elements_read"
+      }
+    },
+    "/api/v3/lego/mocs/{set_num}/": {
+      "get": {
+        "summary": "Get details for a specific MOC.",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "description": "Get details for a specific MOC.",
+        "tags": [
+          "lego"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "set_num",
+            "type": "string"
+          }
+        ],
+        "operationId": "lego_mocs_read"
+      }
+    },
+    "/api/v3/lego/mocs/{set_num}/parts/": {
+      "get": {
+        "summary": "Get a list of all Inventory Parts in this MOC.",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "description": "Get a list of all Inventory Parts in this MOC.",
+        "tags": [
+          "lego"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "set_num",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "required": false,
+            "description": "",
+            "name": "page",
+            "type": "string"
+          }
+        ],
+        "operationId": "lego_mocs_parts_list"
+      }
+    },
+    "/api/v3/lego/part_categories/": {
+      "get": {
+        "summary": "Get a list of all Part Categories.",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "description": "Get a list of all Part Categories.",
+        "tags": [
+          "lego"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "required": false,
+            "description": "",
+            "name": "page",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "required": false,
+            "description": "",
+            "name": "ordering",
+            "type": "string"
+          }
+        ],
+        "operationId": "lego_part_categories_list"
+      }
+    },
+    "/api/v3/lego/part_categories/{id}/": {
+      "get": {
+        "summary": "Get details about a specific Part Category.",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "description": "Get details about a specific Part Category.",
+        "tags": [
+          "lego"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "operationId": "lego_part_categories_read"
+      }
+    },
+    "/api/v3/lego/parts/": {
+      "get": {
+        "summary": "Get a list of Parts.",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "description": "Get a list of Parts.\n\nOptionally filter by one or more of the below query parameters.",
+        "tags": [
+          "lego"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "required": false,
+            "description": "",
+            "name": "page",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "required": false,
+            "description": "",
+            "name": "part_num",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "required": false,
+            "description": "",
+            "name": "part_cat_id",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "required": false,
+            "description": "",
+            "name": "color_id",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "required": false,
+            "description": "",
+            "name": "bricklink_id",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "required": false,
+            "description": "",
+            "name": "brickowl_id",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "required": false,
+            "description": "",
+            "name": "lego_id",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "required": false,
+            "description": "",
+            "name": "ldraw_id",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "required": false,
+            "description": "",
+            "name": "ordering",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "required": false,
+            "description": "",
+            "name": "search",
+            "type": "string"
+          }
+        ],
+        "operationId": "lego_parts_list"
+      }
+    },
+    "/api/v3/lego/parts/{part_num}/": {
+      "get": {
+        "summary": "Get details about a specific Part.",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "description": "Get details about a specific Part.",
+        "tags": [
+          "lego"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "part_num",
+            "type": "string"
+          }
+        ],
+        "operationId": "lego_parts_read"
+      }
+    },
+    "/api/v3/lego/parts/{part_num}/colors/": {
+      "get": {
+        "summary": "Get a list of all Colors a Part has appeared in.",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "description": "Get a list of all Colors a Part has appeared in.",
+        "tags": [
+          "lego"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "part_num",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "required": false,
+            "description": "",
+            "name": "page",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "required": false,
+            "description": "",
+            "name": "ordering",
+            "type": "string"
+          }
+        ],
+        "operationId": "lego_parts_colors_list"
+      }
+    },
+    "/api/v3/lego/parts/{part_num}/colors/{color_id}/": {
+      "get": {
+        "summary": "Get details about a specific Part/Color combination.",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "description": "Get details about a specific Part/Color combination.",
+        "tags": [
+          "lego"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "part_num",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "color_id",
+            "type": "string"
+          }
+        ],
+        "operationId": "lego_parts_colors_read"
+      }
+    },
+    "/api/v3/lego/parts/{part_num}/colors/{color_id}/sets/": {
+      "get": {
+        "summary": "Get a list of all Sets the Part/Color combination has appeard in.",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "description": "Get a list of all Sets the Part/Color combination has appeard in.",
+        "tags": [
+          "lego"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "part_num",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "color_id",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "required": false,
+            "description": "",
+            "name": "page",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "required": false,
+            "description": "",
+            "name": "ordering",
+            "type": "string"
+          }
+        ],
+        "operationId": "lego_parts_colors_sets_list"
+      }
+    },
+    "/api/v3/lego/sets/": {
+      "get": {
+        "summary": "Get a list of Sets, optionally filtered by any of the below parameters.",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema":{
+              "$ref":"#/definitions/Sets"
+            }
+          }
+        },
+        "description": "Get a list of Sets, optionally filtered by any of the below parameters.",
+        "tags": [
+          "lego"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "required": false,
+            "description": "",
+            "name": "page",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "required": false,
+            "description": "",
+            "name": "theme_id",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "required": false,
+            "description": "",
+            "name": "min_year",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "required": false,
+            "description": "",
+            "name": "max_year",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "required": false,
+            "description": "",
+            "name": "min_parts",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "required": false,
+            "description": "",
+            "name": "max_parts",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "required": false,
+            "description": "",
+            "name": "ordering",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "required": false,
+            "description": "",
+            "name": "search",
+            "type": "string"
+          }
+        ],
+        "operationId": "lego_sets_list"
+      }
+    },
+    "/api/v3/lego/sets/{set_num}/": {
+      "get": {
+        "summary": "Get details for a specific Set.",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema":{
+              "$ref":"#/definitions/Set"
+            }
+          }
+        },
+        "description": "Get details for a specific Set.",
+        "tags": [
+          "lego"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "set_num",
+            "type": "string"
+          }
+        ],
+        "operationId": "lego_sets_read"
+      }
+    },
+    "/api/v3/lego/sets/{set_num}/alternates/": {
+      "get": {
+        "summary": "Get a list of MOCs which are Alternate Builds of a specific Set - i.e. all parts in the MOC can",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "description": "Get a list of MOCs which are Alternate Builds of a specific Set - i.e. all parts in the MOC can\nbe found in the Set.",
+        "tags": [
+          "lego"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "set_num",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "required": false,
+            "description": "",
+            "name": "page",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "required": false,
+            "description": "",
+            "name": "ordering",
+            "type": "string"
+          }
+        ],
+        "operationId": "lego_sets_alternates_list"
+      }
+    },
+    "/api/v3/lego/sets/{set_num}/parts/": {
+      "get": {
+        "summary": "Get a list of all Inventory Parts in this Set.",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "description": "Get a list of all Inventory Parts in this Set.",
+        "tags": [
+          "lego"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "set_num",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "required": false,
+            "description": "",
+            "name": "page",
+            "type": "string"
+          }
+        ],
+        "operationId": "lego_sets_parts_list"
+      }
+    },
+    "/api/v3/lego/sets/{set_num}/sets/": {
+      "get": {
+        "summary": "Get a list of all Inventory Sets in this Set.",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "description": "Get a list of all Inventory Sets in this Set.",
+        "tags": [
+          "lego"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "set_num",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "required": false,
+            "description": "",
+            "name": "page",
+            "type": "string"
+          }
+        ],
+        "operationId": "lego_sets_sets_list"
+      }
+    },
+    "/api/v3/lego/themes/": {
+      "get": {
+        "summary": "Return all Themes",
+        "responses": {
+          "200": {
+            "description": "Themes",
+            "schema":{
+              "$ref":"#/definitions/Themes"
+            }
+          }
+        },
+        "description": "Return all Themes",
+        "tags": [
+          "lego"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "required": false,
+            "description": "",
+            "name": "page",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "required": false,
+            "description": "",
+            "name": "ordering",
+            "type": "string"
+          }
+        ],
+        "operationId": "lego_themes_list"
+      }
+    },
+    "/api/v3/lego/themes/{id}/": {
+      "get": {
+        "summary": "Return details for a specific Theme",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema":{
+              "$ref":"#/definitions/Theme"
+            }
+          }
+        },
+        "description": "Return details for a specific Theme",
+        "tags": [
+          "lego"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "operationId": "lego_themes_read"
+      }
+    },
+    "/api/v3/users/_token/": {
+      "post": {
+        "summary": "Generate a User Token to be used for authorising user account actions in subsequent calls. Username can be either",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "description": "Generate a User Token to be used for authorising user account actions in subsequent calls. Username can be either\nthe actual username or the user's email address.",
+        "tags": [
+          "users"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "required": true,
+            "description": "Username (or email) of user",
+            "name": "username",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "required": true,
+            "description": "Password of user",
+            "name": "password",
+            "type": "string"
+          }
+        ],
+        "operationId": "users__token_create"
+      }
+    },
+    "/api/v3/users/badges/": {
+      "get": {
+        "summary": "Get a list of all the available Badges",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "description": "Get a list of all the available Badges",
+        "tags": [
+          "users"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "required": false,
+            "description": "",
+            "name": "page",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "required": false,
+            "description": "",
+            "name": "ordering",
+            "type": "string"
+          }
+        ],
+        "operationId": "users_badges_list"
+      }
+    },
+    "/api/v3/users/badges/{id}/": {
+      "get": {
+        "summary": "Get details about a specific Badge",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "description": "Get details about a specific Badge",
+        "tags": [
+          "users"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "operationId": "users_badges_read"
+      }
+    },
+    "/api/v3/users/{user_token}/allparts/": {
+      "get": {
+        "summary": "Get a list of all the Parts in all the user's Part Lists as well as the Parts inside Sets in the user's Set Lists.",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "description": "Get a list of all the Parts in all the user's Part Lists as well as the Parts inside Sets in the user's Set Lists.\n\n###WARNING this call is very resource intensive, do not overuse it!\n\nOptionally, filter by one or more of the below query parameters.",
+        "tags": [
+          "users"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "user_token",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "required": false,
+            "description": "",
+            "name": "page",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "required": false,
+            "description": "",
+            "name": "part_num",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "required": false,
+            "description": "",
+            "name": "part_cat_id",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "required": false,
+            "description": "",
+            "name": "color_id",
+            "type": "string"
+          }
+        ],
+        "operationId": "users_allparts_list"
+      }
+    },
+    "/api/v3/users/{user_token}/build/{set_num}/": {
+      "get": {
+        "summary": "Find out how many parts the user needs to build the specified Set.",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "description": "Find out how many parts the user needs to build the specified Set.\n\nThe user's default Build Settings will be used to calculate a Build Match % using their LEGO Collection of Sets\nand Parts.",
+        "tags": [
+          "users"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "user_token",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "set_num",
+            "type": "string"
+          }
+        ],
+        "operationId": "users_build_read"
+      }
+    },
+    "/api/v3/users/{user_token}/lost_parts/": {
+      "get": {
+        "summary": "Get a list of all the Lost Parts from the user's LEGO collection.",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "description": "Get a list of all the Lost Parts from the user's LEGO collection.\n\nOptionally, filter by one or more of the below query parameters.",
+        "tags": [
+          "users"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "user_token",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "required": false,
+            "description": "",
+            "name": "page",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "required": false,
+            "description": "",
+            "name": "ordering",
+            "type": "string"
+          }
+        ],
+        "operationId": "users_lost_parts_list"
+      },
+      "post": {
+        "summary": "Add one or more Lost Parts to the user.",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "description": "Add one or more Lost Parts to the user.\n\n### Single Part\nWhen adding a single Part, returns the successfully created Part (status 201) or details for why the Part could not\nbe added.\n### Multiple Parts\nTo add multiple Parts, POST a JSON list of them (using a Content-Type header of 'application/json').\ne.g:\n`[{\"part_num\":\"3001\", \"color_id\": 1, \"quantity\": 10},\n{\"part_num\":\"3001\", \"color_id\": 2, \"quantity\": 20},\n{\"part_num\":\"3002\", \"color_id\": 14, \"quantity\": 30}]`\nReturns a list of successfully added Parts. If the Part already exists or is unrecognised, it will be skipped.",
+        "tags": [
+          "users"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "user_token",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "required": false,
+            "description": "",
+            "name": "lost_quantity",
+            "type": "integer"
+          },
+          {
+            "in": "formData",
+            "required": true,
+            "description": "",
+            "name": "inv_part_id",
+            "type": "integer"
+          }
+        ],
+        "operationId": "users_lost_parts_create"
+      }
+    },
+    "/api/v3/users/{user_token}/lost_parts/{id}/": {
+      "delete": {
+        "summary": "Remove the Lost Part from the user.",
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "description": "Remove the Lost Part from the user.",
+        "tags": [
+          "users"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "user_token",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "operationId": "users_lost_parts_delete"
+      }
+    },
+    "/api/v3/users/{user_token}/partlists/": {
+      "get": {
+        "summary": "Get a list of all the user's Part Lists.",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "description": "Get a list of all the user's Part Lists.",
+        "tags": [
+          "users"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "user_token",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "required": false,
+            "description": "",
+            "name": "page",
+            "type": "string"
+          }
+        ],
+        "operationId": "users_partlists_list"
+      },
+      "post": {
+        "summary": "Add a new Part List.",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "description": "Add a new Part List.",
+        "tags": [
+          "users"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "user_token",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "required": false,
+            "description": "",
+            "name": "is_buildable",
+            "type": "boolean"
+          },
+          {
+            "in": "formData",
+            "required": true,
+            "description": "",
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "required": false,
+            "description": "",
+            "name": "num_parts",
+            "type": "integer"
+          }
+        ],
+        "operationId": "users_partlists_create"
+      }
+    },
+    "/api/v3/users/{user_token}/partlists/{list_id}/": {
+      "get": {
+        "summary": "Get details about a specific Part List.",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "description": "Get details about a specific Part List.",
+        "tags": [
+          "users"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "list_id",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "user_token",
+            "type": "string"
+          }
+        ],
+        "operationId": "users_partlists_read"
+      },
+      "put": {
+        "summary": "Replace an existing Part List's details.",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "description": "Replace an existing Part List's details.",
+        "tags": [
+          "users"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "list_id",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "user_token",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "required": false,
+            "description": "",
+            "name": "is_buildable",
+            "type": "boolean"
+          },
+          {
+            "in": "formData",
+            "required": true,
+            "description": "",
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "required": false,
+            "description": "",
+            "name": "num_parts",
+            "type": "integer"
+          }
+        ],
+        "operationId": "users_partlists_update"
+      },
+      "patch": {
+        "summary": "Update an existing Part List's details.",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "description": "Update an existing Part List's details.",
+        "tags": [
+          "users"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "list_id",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "user_token",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "required": false,
+            "description": "",
+            "name": "is_buildable",
+            "type": "boolean"
+          },
+          {
+            "in": "formData",
+            "required": false,
+            "description": "",
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "required": false,
+            "description": "",
+            "name": "num_parts",
+            "type": "integer"
+          }
+        ],
+        "operationId": "users_partlists_partial_update"
+      },
+      "delete": {
+        "summary": "Delete a Part List and all it's Parts.",
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "description": "Delete a Part List and all it's Parts.",
+        "tags": [
+          "users"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "list_id",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "user_token",
+            "type": "string"
+          }
+        ],
+        "operationId": "users_partlists_delete"
+      }
+    },
+    "/api/v3/users/{user_token}/partlists/{list_id}/parts/": {
+      "get": {
+        "summary": "Get a list of all the Parts in a specific Part List.",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "description": "Get a list of all the Parts in a specific Part List.",
+        "tags": [
+          "users"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "list_id",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "user_token",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "required": false,
+            "description": "",
+            "name": "page",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "required": false,
+            "description": "",
+            "name": "ordering",
+            "type": "string"
+          }
+        ],
+        "operationId": "users_partlists_parts_list"
+      },
+      "post": {
+        "summary": "Add one or more Parts to the Part List.",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "description": "Add one or more Parts to the Part List.\n\n### Single Part\nWhen adding a single Part, returns the successfully created Part (status 201) or details for why the Part could not\nbe added.\n### Multiple Parts\nTo add multiple Parts, POST a JSON list of them (using a Content-Type header of 'application/json').\ne.g:\n`[{\"part_num\":\"3001\", \"color_id\": 1, \"quantity\": 10},\n{\"part_num\":\"3001\", \"color_id\": 2, \"quantity\": 20},\n{\"part_num\":\"3002\", \"color_id\": 14, \"quantity\": 30}]`\nReturns a list of successfully added Parts. If the Part already exists or is unrecognised, it will be skipped.",
+        "tags": [
+          "users"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "list_id",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "user_token",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "required": true,
+            "description": "",
+            "name": "part_num",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "required": true,
+            "description": "",
+            "name": "quantity",
+            "type": "integer"
+          },
+          {
+            "in": "formData",
+            "required": true,
+            "description": "",
+            "name": "color_id",
+            "type": "integer"
+          }
+        ],
+        "operationId": "users_partlists_parts_create"
+      }
+    },
+    "/api/v3/users/{user_token}/partlists/{list_id}/parts/{part_num}/{color_id}/": {
+      "get": {
+        "summary": "Get details about a specific Part in the Part List.",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "description": "Get details about a specific Part in the Part List.",
+        "tags": [
+          "users"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "list_id",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "user_token",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "part_num",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "color_id",
+            "type": "string"
+          }
+        ],
+        "operationId": "users_partlists_parts_read"
+      },
+      "put": {
+        "summary": "Replace an existing Part's details in the Part List.",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "description": "Replace an existing Part's details in the Part List.",
+        "tags": [
+          "users"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "list_id",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "user_token",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "part_num",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "color_id",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "required": true,
+            "description": "",
+            "name": "quantity",
+            "type": "integer"
+          }
+        ],
+        "operationId": "users_partlists_parts_update"
+      },
+      "delete": {
+        "summary": "Delete a Part from the Part List.",
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "description": "Delete a Part from the Part List.",
+        "tags": [
+          "users"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "list_id",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "user_token",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "part_num",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "color_id",
+            "type": "string"
+          }
+        ],
+        "operationId": "users_partlists_parts_delete"
+      }
+    },
+    "/api/v3/users/{user_token}/parts/": {
+      "get": {
+        "summary": "Get a list of all the Parts in all the user's Part Lists.",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "description": "Get a list of all the Parts in all the user's Part Lists.\n\n###Set List logic\nParts appearing in multiple Part Lists will be listed multiple times.\n\nOptionally, filter by one or more of the below query parameters.",
+        "tags": [
+          "users"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "user_token",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "required": false,
+            "description": "",
+            "name": "page",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "required": false,
+            "description": "",
+            "name": "part_num",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "required": false,
+            "description": "",
+            "name": "part_cat_id",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "required": false,
+            "description": "",
+            "name": "color_id",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "required": false,
+            "description": "",
+            "name": "ordering",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "required": false,
+            "description": "",
+            "name": "search",
+            "type": "string"
+          }
+        ],
+        "operationId": "users_parts_list"
+      }
+    },
+    "/api/v3/users/{user_token}/profile/": {
+      "get": {
+        "summary": "Get details about a specific user.",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "description": "Get details about a specific user.",
+        "tags": [
+          "users"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "user_token",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "required": false,
+            "description": "",
+            "name": "page",
+            "type": "string"
+          }
+        ],
+        "operationId": "users_profile_list"
+      }
+    },
+    "/api/v3/users/{user_token}/setlists/": {
+      "get": {
+        "summary": "Get a list of all the user's Set Lists.",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "description": "Get a list of all the user's Set Lists.",
+        "tags": [
+          "users"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "user_token",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "required": false,
+            "description": "",
+            "name": "page",
+            "type": "string"
+          }
+        ],
+        "operationId": "users_setlists_list"
+      },
+      "post": {
+        "summary": "Add a new Set List.",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "description": "Add a new Set List.",
+        "tags": [
+          "users"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "user_token",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "required": false,
+            "description": "",
+            "name": "is_buildable",
+            "type": "boolean"
+          },
+          {
+            "in": "formData",
+            "required": true,
+            "description": "",
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "required": false,
+            "description": "",
+            "name": "num_sets",
+            "type": "integer"
+          }
+        ],
+        "operationId": "users_setlists_create"
+      }
+    },
+    "/api/v3/users/{user_token}/setlists/{list_id}/": {
+      "get": {
+        "summary": "Get details about a specific Set List.",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "description": "Get details about a specific Set List.",
+        "tags": [
+          "users"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "list_id",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "user_token",
+            "type": "string"
+          }
+        ],
+        "operationId": "users_setlists_read"
+      },
+      "put": {
+        "summary": "Replace an existing Set List's details.",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "description": "Replace an existing Set List's details.",
+        "tags": [
+          "users"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "list_id",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "user_token",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "required": false,
+            "description": "",
+            "name": "is_buildable",
+            "type": "boolean"
+          },
+          {
+            "in": "formData",
+            "required": true,
+            "description": "",
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "required": false,
+            "description": "",
+            "name": "num_sets",
+            "type": "integer"
+          }
+        ],
+        "operationId": "users_setlists_update"
+      },
+      "patch": {
+        "summary": "Update an existing Set List's details.",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "description": "Update an existing Set List's details.",
+        "tags": [
+          "users"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "list_id",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "user_token",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "required": false,
+            "description": "",
+            "name": "is_buildable",
+            "type": "boolean"
+          },
+          {
+            "in": "formData",
+            "required": false,
+            "description": "",
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "required": false,
+            "description": "",
+            "name": "num_sets",
+            "type": "integer"
+          }
+        ],
+        "operationId": "users_setlists_partial_update"
+      },
+      "delete": {
+        "summary": "Delete a Set List and all it's Sets.",
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "description": "Delete a Set List and all it's Sets.",
+        "tags": [
+          "users"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "list_id",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "user_token",
+            "type": "string"
+          }
+        ],
+        "operationId": "users_setlists_delete"
+      }
+    },
+    "/api/v3/users/{user_token}/setlists/{list_id}/sets/": {
+      "get": {
+        "summary": "Get a list of all the Sets in a specific Set List.",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "description": "Get a list of all the Sets in a specific Set List.",
+        "tags": [
+          "users"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "list_id",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "user_token",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "required": false,
+            "description": "",
+            "name": "page",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "required": false,
+            "description": "",
+            "name": "ordering",
+            "type": "string"
+          }
+        ],
+        "operationId": "users_setlists_sets_list"
+      },
+      "post": {
+        "summary": "Add one or more Sets to the Set List. Existing Sets are unaffected.",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "description": "Add one or more Sets to the Set List. Existing Sets are unaffected.\n\n### Single Set\nWhen adding a single Set, returns the successfully created Set (status 201) or details for why the Set could not\nbe added.\n### Multiple Sets\nTo add multiple Sets, POST a JSON list of them (using a Content-Type header of 'application/json').\ne.g:\n`[{\"set_num\":\"8043-1\", \"quantity\": 1},\n{\"set_num\":\"8110-1\", \"quantity\": 2, \"include_spares\": \"False\"}]`\nReturns a list of successfully added Sets. If the Set already exists or is unrecognised, it will be skipped.",
+        "tags": [
+          "users"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "list_id",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "user_token",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "required": true,
+            "description": "",
+            "name": "set_num",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "required": false,
+            "description": "",
+            "name": "quantity",
+            "type": "integer"
+          },
+          {
+            "in": "formData",
+            "required": false,
+            "description": "",
+            "name": "include_spares",
+            "type": "boolean"
+          }
+        ],
+        "operationId": "users_setlists_sets_create"
+      }
+    },
+    "/api/v3/users/{user_token}/setlists/{list_id}/sets/{set_num}/": {
+      "get": {
+        "summary": "Get details about a specific Set in the Set List.",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "description": "Get details about a specific Set in the Set List.",
+        "tags": [
+          "users"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "list_id",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "user_token",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "set_num",
+            "type": "string"
+          }
+        ],
+        "operationId": "users_setlists_sets_read"
+      },
+      "put": {
+        "summary": "Replace an existing Set's details in the Set List.",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "description": "Replace an existing Set's details in the Set List.",
+        "tags": [
+          "users"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "list_id",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "user_token",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "set_num",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "required": false,
+            "description": "",
+            "name": "quantity",
+            "type": "integer"
+          },
+          {
+            "in": "formData",
+            "required": false,
+            "description": "",
+            "name": "include_spares",
+            "type": "boolean"
+          }
+        ],
+        "operationId": "users_setlists_sets_update"
+      },
+      "patch": {
+        "summary": "Update an existing Set's details in the Set List.",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "description": "Update an existing Set's details in the Set List.",
+        "tags": [
+          "users"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "list_id",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "user_token",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "set_num",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "required": false,
+            "description": "",
+            "name": "quantity",
+            "type": "integer"
+          },
+          {
+            "in": "formData",
+            "required": false,
+            "description": "",
+            "name": "include_spares",
+            "type": "boolean"
+          }
+        ],
+        "operationId": "users_setlists_sets_partial_update"
+      },
+      "delete": {
+        "summary": "Delete a Set from the Set List.",
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "description": "Delete a Set from the Set List.",
+        "tags": [
+          "users"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "list_id",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "user_token",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "set_num",
+            "type": "string"
+          }
+        ],
+        "operationId": "users_setlists_sets_delete"
+      }
+    },
+    "/api/v3/users/{user_token}/sets/": {
+      "get": {
+        "summary": "Get a list of all the Sets in the user's LEGO collection.",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "description": "Get a list of all the Sets in the user's LEGO collection.\n\n### Set List logic\nSets appearing in multiple Set Lists will be listed multiple times.\n\nOptionally, filter by one or more of the below query parameters.",
+        "tags": [
+          "users"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "user_token",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "required": false,
+            "description": "",
+            "name": "page",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "required": false,
+            "description": "",
+            "name": "set_num",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "required": false,
+            "description": "",
+            "name": "theme_id",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "required": false,
+            "description": "",
+            "name": "min_year",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "required": false,
+            "description": "",
+            "name": "max_year",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "required": false,
+            "description": "",
+            "name": "min_parts",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "required": false,
+            "description": "",
+            "name": "max_parts",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "required": false,
+            "description": "",
+            "name": "ordering",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "required": false,
+            "description": "",
+            "name": "search",
+            "type": "string"
+          }
+        ],
+        "operationId": "users_sets_list"
+      },
+      "post": {
+        "summary": "Add one or more Sets to the user's LEGO collection. Existing Sets are unaffected.",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "description": "Add one or more Sets to the user's LEGO collection. Existing Sets are unaffected.\n\n### Set List logic\nThe Set List used when adding sets is chosen in the following order:\n1. If no Set Lists exist, one will be created and used\n2. User's configured default Set List for Imports\n3. The first Set List alphabetically\n\n### Single Set\nWhen adding a single Set, returns the successfully created Set (status 201) or details for why the Set could not\nbe added.\n### Multiple Sets\nTo add multiple Sets, POST a JSON list of them (using a Content-Type header of 'application/json').\ne.g:\n`[{\"set_num\":\"8043-1\", \"quantity\": 1},\n{\"set_num\":\"8110-1\", \"quantity\": 2, \"include_spares\": \"False\"}]`\nReturns a list of successfully added Sets. If the Set already exists or is unrecognised, it will be skipped.",
+        "tags": [
+          "users"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "user_token",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "required": true,
+            "description": "",
+            "name": "set_num",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "required": false,
+            "description": "",
+            "name": "quantity",
+            "type": "integer"
+          },
+          {
+            "in": "formData",
+            "required": false,
+            "description": "",
+            "name": "include_spares",
+            "type": "boolean"
+          }
+        ],
+        "operationId": "users_sets_create"
+      }
+    },
+    "/api/v3/users/{user_token}/sets/sync/": {
+      "post": {
+        "summary": "Synchronise a user's Sets to the POSTed list.",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "description": "Synchronise a user's Sets to the POSTed list.\n\n### Set List logic\nThis is used to completely replace the user's Sets with those in the supplied list.\nIt will remove any Sets in Rebrickable that are not found in the supplied list.\nIt will attempt to keep any current Rebrickable Sets in their existing Set Lists, and will add any new Sets\nfound into the Default Set List for Imports in the user's settings.\n### Single Set\nWhen adding a single Set, returns the successfully created Set (status 201) or details for why the Set could not\nbe added.\n### Multiple Sets\nTo add multiple Sets, POST a JSON list of them (using a Content-Type header of 'application/json').\ne.g:\n`[{\"set_num\":\"8043-1\", \"quantity\": 1},\n{\"set_num\":\"8110-1\", \"quantity\": 2, \"include_spares\": \"False\"}]`\nReturns a list of successfully added Sets. If the Set is unrecognised, it will be skipped.",
+        "tags": [
+          "users"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "user_token",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "required": false,
+            "description": "",
+            "name": "quantity",
+            "type": "integer"
+          },
+          {
+            "in": "formData",
+            "required": false,
+            "description": "",
+            "name": "include_spares",
+            "type": "boolean"
+          },
+          {
+            "in": "formData",
+            "required": true,
+            "description": "",
+            "name": "set_num",
+            "type": "string"
+          }
+        ],
+        "operationId": "users_sets_sync_create"
+      }
+    },
+    "/api/v3/users/{user_token}/sets/{set_num}/": {
+      "get": {
+        "summary": "Get details about a specific Set in the user's LEGO collection.",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "description": "Get details about a specific Set in the user's LEGO collection.\n\n### Set List logic\nBecause this merges sets found across all Set Lists the fields list_id and include_spares may not be\naccurate unless the Set actually only exists in a single Set List.",
+        "tags": [
+          "users"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "user_token",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "set_num",
+            "type": "string"
+          }
+        ],
+        "operationId": "users_sets_read"
+      },
+      "put": {
+        "summary": "Update an existing Set's quantity in all Set Lists. This PUT call is different to others in that it will create",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "description": "Update an existing Set's quantity in all Set Lists. This PUT call is different to others in that it will create\nthe Set if it doesn't already exist, and it will delete the Set if you pass a quantity of 0.\n\n### Set List logic\n* Default Set List = user's configured default import list or the first alphabetically if none exist.\n* Increasing quantity = add to Set in default Set List if it exists, else add it there\n* Decreasing quantity = remove from Set in default Set List first, then from remaining lists until done",
+        "tags": [
+          "users"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "user_token",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "set_num",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "required": false,
+            "description": "",
+            "name": "quantity",
+            "type": "integer"
+          }
+        ],
+        "operationId": "users_sets_update"
+      },
+      "delete": {
+        "summary": "Delete the Set from all the user's Set Lists.",
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "description": "Delete the Set from all the user's Set Lists.",
+        "tags": [
+          "users"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "user_token",
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "required": true,
+            "description": "",
+            "name": "set_num",
+            "type": "string"
+          }
+        ],
+        "operationId": "users_sets_delete"
+      }
+    }
+  }
+}
